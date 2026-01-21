@@ -13,7 +13,7 @@ This roadmap delivers a Claude skill that transforms Gong transcripts into profe
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Single-File MVP** - Core extraction and email generation in working SKILL.md
-- [ ] **Phase 2: Robust Handling** - Activation tuning, placeholders, and Postman resource library
+- [x] **Phase 2: Robust Handling** - Activation tuning, placeholders, and Postman resource library
 - [ ] **Phase 3: Distribution** - Platform packaging and team setup documentation
 
 ## Phase Details
@@ -53,8 +53,8 @@ Plans:
 **Plans:** 2 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Add activation detection and ask-then-generate clarification protocol
-- [ ] 02-02-PLAN.md — Add Postman resource library with contextual matching and attachment detection
+- [x] 02-01-PLAN.md — Add activation detection and ask-then-generate clarification protocol
+- [x] 02-02-PLAN.md — Add Postman resource library with contextual matching and attachment detection
 
 ### Phase 3: Distribution
 **Goal**: Team members can install and use the skill in their preferred Claude environment
@@ -82,7 +82,7 @@ Phases execute in numeric order: 1 -> 2 -> 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Single-File MVP | 1/1 | Complete | 2026-01-21 |
-| 2. Robust Handling | 0/2 | Not started | - |
+| 2. Robust Handling | 2/2 | Complete | 2026-01-21 |
 | 3. Distribution | 0/1 | Not started | - |
 
 ---

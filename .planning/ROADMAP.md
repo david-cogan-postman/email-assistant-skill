@@ -69,10 +69,10 @@ Plans:
   3. ZIP package includes all necessary files and clear installation steps
   4. Team members can customize signature without editing skill logic
 
-**Plans**: TBD (during phase planning)
+**Plans:** 1 plan
 
 Plans:
-- [ ] 03-01: TBD
+- [ ] 03-01-PLAN.md — Create ZIP distribution package with SKILL.md and installation README
 
 ## Progress
 

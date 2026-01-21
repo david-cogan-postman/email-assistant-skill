@@ -174,6 +174,75 @@ Use descriptive anchor text from conversation, not generic "click here" or bare 
 - No hard limit on suggestions—typically 3-7 based on call content
 </resource_matching>
 
+<attachment_detection>
+# Attachment Reminder Logic
+
+Add attachment placeholders when user promises to send materials.
+
+## Two-Condition Rule
+
+Attachment reminder ONLY when transcript contains BOTH:
+
+1. **PRESENTATION words**: deck, slides, presentation, PDF, document, file, materials, spreadsheet
+2. **SHARING words**: send, share, attach, forward, email you, get you, provide
+
+## Detection Examples
+
+**"I'll send over the onboarding deck"** → YES
+- Presentation: "deck" | Sharing: "send over"
+- Placeholder: [ATTACH: onboarding deck]
+
+**"Let me share those slides with you"** → YES
+- Presentation: "slides" | Sharing: "share"
+- Placeholder: [ATTACH: slides]
+
+**"The deck from last week showed..."** → NO
+- Presentation: "deck" | Sharing: NONE (just referenced, not promised)
+
+**"I'll send you the quarterly results"** → YES
+- Presentation: implied document | Sharing: "send you"
+- Placeholder: [ATTACH: quarterly results]
+
+**"We looked at the roadmap"** → NO
+- Presentation: implied document | Sharing: NONE
+
+## Semantic Understanding
+
+Use Claude's natural language understanding—don't require exact keyword matches.
+
+Variations that count as SHARING words:
+- "I'll get you that" (implies sending)
+- "Forward the materials" (forwarding is sharing)
+- "Email you the file" (explicit sharing)
+- "You'll receive the deck" (implies sending)
+
+## Placeholder Format
+
+Name attachment based on context from transcript:
+
+- "I'll share the integration guide" → [ATTACH: integration guide]
+- "Sending over the Q3 slides" → [ATTACH: Q3 slides]
+- "Attaching the customer deck" → [ATTACH: customer deck]
+
+NOT generic "[ATTACHMENT]"—use specific item name from context.
+
+## Placement in Email
+
+Place placeholder where it fits naturally:
+
+- **INLINE**: "I'll send the [ATTACH: onboarding deck] by end of day."
+- **SEPARATE LINE**: "[ATTACH: quarterly review slides]"
+- **WITH ACTION ITEM**: "• Send [ATTACH: integration guide] to team"
+
+## Multiple Attachments
+
+If multiple items promised, create separate placeholder for each:
+
+"I'll send the deck and the case study"
+→ [ATTACH: deck]
+→ [ATTACH: case study]
+</attachment_detection>
+
 ## Your Task
 
 When you receive a transcript:
@@ -313,8 +382,10 @@ IF transcript shows "Speaker 1", "Speaker 2" instead of names:
 - End with open offer to help
 
 ### Attachments Mentioned
-- Include a line: "Attaching [description] as discussed."
-- Place after opening or after resources section
+See `<attachment_detection>` section for when and how to add attachment placeholders.
+- Use two-condition rule: PRESENTATION word + SHARING word
+- Name attachment based on context: [ATTACH: item name]
+- Place where natural in email flow
 
 ### Long Transcripts
 - Focus on: key decisions, action items, resources to share

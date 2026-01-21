@@ -11,28 +11,29 @@ See: .planning/PROJECT.md (updated 2025-01-21)
 ## Current Position
 
 Phase: 2 of 3 (Robust Handling)
-Plan: Ready to plan phase
-Status: Phase 1 complete, ready for Phase 2
-Last activity: 2026-01-21 — Verified Phase 1 complete
+Plan: 1 of 3 complete
+Status: In progress
+Last activity: 2026-01-21 — Completed 02-01-PLAN.md (activation detection and clarification protocol)
 
-Progress: [███░░░░░░░] 33% (1/3 phases)
+Progress: [████░░░░░░] 40% (2/5 plans completed across all phases)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 2 min
-- Total execution time: 0.04 hours
+- Total plans completed: 2
+- Average duration: 1.5 min
+- Total execution time: 0.05 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-single-file-mvp | 1 | 2 min | 2 min |
+| 02-robust-handling | 1 | 1 min | 1 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (2 min)
-- Trend: Not yet established
+- Last 5 plans: 01-01 (2 min), 02-01 (1 min)
+- Trend: Improving velocity
 
 *Updated after each plan completion*
 
@@ -49,6 +50,8 @@ Recent decisions affecting current work:
 - [Initialization]: Resource library built into skill — Contextual suggestions reduce manual link hunting
 - [01-01]: Ask-before-generating for unclear recipients — Better UX than placeholder names in greetings
 - [01-01]: 3 few-shot examples included — Maximizes learning for different scenarios
+- [02-01]: Changed to ask-then-generate pattern — Generate draft with [NAME] placeholder while asking, never block generation
+- [02-01]: Three-tier activation detection — Clear/ambiguous/none invocation logic for flexible but intentional activation
 
 ### Pending Todos
 
@@ -60,8 +63,8 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-01-21 19:47 UTC
-Stopped at: Completed 01-01-PLAN.md, SKILL.md ready for use
+Last session: 2026-01-21 19:48 UTC
+Stopped at: Completed 02-01-PLAN.md, activation detection and clarification protocol added to SKILL.md
 Resume file: None
 
 ---

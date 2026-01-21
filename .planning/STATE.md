@@ -11,29 +11,29 @@ See: .planning/PROJECT.md (updated 2025-01-21)
 ## Current Position
 
 Phase: 2 of 3 (Robust Handling)
-Plan: 1 of 3 complete
+Plan: 2 of 3 complete
 Status: In progress
-Last activity: 2026-01-21 — Completed 02-01-PLAN.md (activation detection and clarification protocol)
+Last activity: 2026-01-21 — Completed 02-02-PLAN.md (resource library and attachment detection)
 
-Progress: [████░░░░░░] 40% (2/5 plans completed across all phases)
+Progress: [█████░░░░░] 50% (3/6 plans completed across all phases)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
-- Average duration: 1.5 min
-- Total execution time: 0.05 hours
+- Total plans completed: 3
+- Average duration: 1.7 min
+- Total execution time: 0.08 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-single-file-mvp | 1 | 2 min | 2 min |
-| 02-robust-handling | 1 | 1 min | 1 min |
+| 02-robust-handling | 2 | 3 min | 1.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (2 min), 02-01 (1 min)
-- Trend: Improving velocity
+- Last 5 plans: 01-01 (2 min), 02-01 (1 min), 02-02 (2 min)
+- Trend: Stable velocity
 
 *Updated after each plan completion*
 
@@ -52,6 +52,9 @@ Recent decisions affecting current work:
 - [01-01]: 3 few-shot examples included — Maximizes learning for different scenarios
 - [02-01]: Changed to ask-then-generate pattern — Generate draft with [NAME] placeholder while asking, never block generation
 - [02-01]: Three-tier activation detection — Clear/ambiguous/none invocation logic for flexible but intentional activation
+- [02-02]: Embedded resource library instead of dynamic search — Postman docs are stable, curated list is faster and more accurate
+- [02-02]: Two-condition attachment rule — Requires PRESENTATION word + SHARING word to reduce false positives
+- [02-02]: Context-aware attachment naming — [ATTACH: item name] instead of generic placeholders
 
 ### Pending Todos
 
@@ -63,8 +66,8 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-01-21 19:48 UTC
-Stopped at: Completed 02-01-PLAN.md, activation detection and clarification protocol added to SKILL.md
+Last session: 2026-01-21 21:27 UTC
+Stopped at: Completed 02-02-PLAN.md, resource library and attachment detection added to SKILL.md
 Resume file: None
 
 ---

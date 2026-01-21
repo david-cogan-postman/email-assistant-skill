@@ -2,20 +2,20 @@
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2025-01-21)
+See: .planning/PROJECT.md (updated 2026-01-21)
 
 **Core value:** Transform call transcripts into polished, consistent follow-up emails with minimal manual effort — ensuring no action items or resources slip through the cracks.
 
-**Current focus:** Phase 3 - Distribution
+**Current focus:** v1.0 shipped — planning next milestone
 
 ## Current Position
 
-Phase: 3 of 3 (Distribution)
-Plan: 1 of 1 (complete)
-Status: Project complete - all phases finished
-Last activity: 2026-01-21 — Completed 03-01-PLAN.md
+Phase: v1.0 complete
+Plan: N/A
+Status: Milestone shipped, ready for next milestone
+Last activity: 2026-01-21 — v1.0 milestone complete
 
-Progress: [██████████] 100% (3/3 phases)
+Progress: [██████████] 100% v1.0 shipped
 
 ## Performance Metrics
 
@@ -43,37 +43,22 @@ Progress: [██████████] 100% (3/3 phases)
 ### Decisions
 
 Decisions are logged in PROJECT.md Key Decisions table.
-Recent decisions affecting current work:
-
-- [Initialization]: Claude Desktop as primary target — Most of team uses Desktop, David is only Claude Code user
-- [Initialization]: Hyperlinked text over raw URLs — Cleaner email format, matches existing email style
-- [Initialization]: Configurable signature — Team members have different names
-- [Initialization]: Resource library built into skill — Contextual suggestions reduce manual link hunting
-- [01-01]: 3 few-shot examples included — Maximizes learning for different scenarios
-- [02-01]: Changed to ask-then-generate pattern — Generate draft with [NAME] placeholder while asking, never block generation
-- [02-01]: Three-tier activation detection — Clear/ambiguous/none invocation logic for flexible but intentional activation
-- [02-02]: Embedded resource library instead of dynamic search — Postman docs are stable, curated list is faster and more accurate
-- [02-02]: Two-condition attachment rule — Requires PRESENTATION word + SHARING word to reduce false positives
-- [02-02]: Context-aware attachment naming — [ATTACH: item name] instead of generic placeholders
-- [03-01]: Generic [YOUR NAME] signature placeholder — Makes customization need explicit for team
-- [03-01]: ZIP folder structure critical — Must contain folder at root (not loose files) for Claude Desktop
-- [03-01]: Minimal README approach — Text steps only, no screenshots or troubleshooting bloat
-- [03-01]: Same SKILL.md for both platforms — Desktop uploads ZIP, Code copies folder to ~/.claude/skills/
+v1.0 decisions archived to milestones/v1.0-ROADMAP.md.
 
 ### Pending Todos
 
-None - project complete.
+None - v1.0 shipped.
 
 ### Blockers/Concerns
 
-None yet.
+None.
 
 ## Session Continuity
 
 Last session: 2026-01-21
-Stopped at: Completed 03-01-PLAN.md - Project complete
+Stopped at: v1.0 milestone shipped
 Resume file: None
 
 ---
 *State initialized: 2026-01-21*
-*Last updated: 2026-01-21*
+*Last updated: 2026-01-21 after v1.0 milestone*

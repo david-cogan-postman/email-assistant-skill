@@ -50,11 +50,11 @@ Plans:
   3. Skill suggests relevant Postman documentation links based on call context (verification, notebooks, Run in Postman, etc.)
   4. Attachment reminder appears when transcript mentions "deck", "presentation", "PDF", or "attached"
 
-**Plans**: TBD (during phase planning)
+**Plans:** 2 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
+- [ ] 02-01-PLAN.md — Add activation detection and ask-then-generate clarification protocol
+- [ ] 02-02-PLAN.md — Add Postman resource library with contextual matching and attachment detection
 
 ### Phase 3: Distribution
 **Goal**: Team members can install and use the skill in their preferred Claude environment

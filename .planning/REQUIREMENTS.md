@@ -78,31 +78,31 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| EXTR-01 | TBD | Pending |
-| EXTR-02 | TBD | Pending |
-| EXTR-03 | TBD | Pending |
-| EXTR-04 | TBD | Pending |
-| GEN-01 | TBD | Pending |
-| GEN-02 | TBD | Pending |
-| GEN-03 | TBD | Pending |
-| GEN-04 | TBD | Pending |
-| GEN-05 | TBD | Pending |
-| CONF-01 | TBD | Pending |
-| CONF-02 | TBD | Pending |
-| CONF-03 | TBD | Pending |
-| DLVR-01 | TBD | Pending |
-| DLVR-02 | TBD | Pending |
-| PLAT-01 | TBD | Pending |
-| PLAT-02 | TBD | Pending |
-| PLAT-03 | TBD | Pending |
-| DIST-01 | TBD | Pending |
-| DIST-02 | TBD | Pending |
+| EXTR-01 | Phase 1 | Pending |
+| EXTR-02 | Phase 1 | Pending |
+| EXTR-03 | Phase 1 | Pending |
+| EXTR-04 | Phase 1 | Pending |
+| GEN-01 | Phase 1 | Pending |
+| GEN-02 | Phase 1 | Pending |
+| GEN-03 | Phase 1 | Pending |
+| GEN-04 | Phase 1 | Pending |
+| GEN-05 | Phase 1 | Pending |
+| CONF-01 | Phase 1 | Pending |
+| CONF-02 | Phase 2 | Pending |
+| CONF-03 | Phase 1 | Pending |
+| DLVR-01 | Phase 1 | Pending |
+| DLVR-02 | Phase 1 | Pending |
+| PLAT-01 | Phase 3 | Pending |
+| PLAT-02 | Phase 3 | Pending |
+| PLAT-03 | Phase 3 | Pending |
+| DIST-01 | Phase 3 | Pending |
+| DIST-02 | Phase 3 | Pending |
 
 **Coverage:**
 - v1 requirements: 19 total
-- Mapped to phases: 0
-- Unmapped: 19 (will be mapped during roadmap creation)
+- Mapped to phases: 19
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2025-01-21*
-*Last updated: 2025-01-21 after initial definition*
+*Last updated: 2026-01-21 after roadmap creation*

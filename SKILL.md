@@ -1,6 +1,6 @@
 ---
 name: gong-follow-up-email
-description: When user pastes a Gong sales call transcript, this skill extracts participants, resources, and action items to generate a professional follow-up email. Handles incomplete transcripts gracefully.
+description: When user pastes a Gong sales call transcript, this skill extracts participants, resources, and action items to generate a professional follow-up email. Suggests relevant Postman documentation links based on call topics and reminds about promised attachments. Handles incomplete transcripts gracefully.
 ---
 
 # Gong Transcript to Follow-Up Email
@@ -279,6 +279,13 @@ Parse the transcript to identify:
 - **Type:** First meeting, follow-up, workspace review, check-in, etc.
 - **Tone cues:** Formality level, relationship indicators ("always a pleasure," "nice meeting you")
 
+### Topics Discussed
+- **Technical topics:** Features, products, capabilities discussed (for resource matching)
+- **Problems mentioned:** Challenges or questions raised (for resource suggestions)
+- **Solutions proposed:** What was offered or demonstrated
+
+This section drives contextual resource suggestions - extract generously.
+
 ---
 
 ## Formatting Rules
@@ -330,6 +337,8 @@ Parse the transcript to identify:
 ### Body Sections (order based on call emphasis)
 
 **Resources Section** (when links/materials were discussed):
+- Use `<resource_matching>` logic to determine inline (1-3) vs grouped (4+) format
+- Include curated Postman links from `<resource_library>` based on topics discussed
 - Brief intro: "Following up with a few resources as discussed:"
 - Bulleted list with hyperlinked text
 - Group by topic if multiple categories
@@ -340,7 +349,8 @@ Parse the transcript to identify:
 - If no clear action items, skip this section entirely
 
 **Attachments Note** (when applicable):
-- "Attaching the deck from today..." or similar
+- See `<attachment_detection>` for two-condition rule
+- Use [ATTACH: item name] placeholder when materials were promised
 - Reference what was attached and any context
 
 ### Closing

@@ -22,6 +22,26 @@ Curated library for contextual suggestions based on conversation topics.
 - **Collection Documentation**: https://learning.postman.com/docs/publishing-your-api/documenting-your-api/
   Topics: document APIs, auto-generate docs
 
+## MCP Server Publishing
+- **MCP Servers Overview**: https://learning.postman.com/docs/postman-ai-developer-tools/mcp-servers/overview/
+  Topics: MCP, model context protocol, AI integration, create MCP servers
+- **Promote Your MCP Server**: https://learning.postman.com/docs/postman-ai/mcp-servers/promote/
+  Topics: publish MCP, MCP catalog, promote, verified publisher, MCP collection
+- **MCP Requests**: https://learning.postman.com/docs/postman-ai/mcp-requests/overview
+  Topics: MCP requests, add to collections, MCP configuration
+- **Postman MCP Server Setup**: https://learning.postman.com/docs/developer/postman-api/postman-mcp-server/set-up-postman-mcp-server/
+  Topics: MCP server setup, remote server, local server, AI tools
+- **MCP Server Catalog**: https://www.postman.com/explore/mcp-servers
+  Topics: explore MCP, discover MCP servers, MCP catalog, browse
+- **Postman MCP GitHub Repository**: https://github.com/postmanlabs/postman-mcp-server
+  Topics: MCP source code, self-host, local MCP, GitHub
+
+## Publisher Analytics
+- **Explore Publisher Tools**: https://learning.postman.com/docs/postman-api-network/showcase/explore-publisher-tools/
+  Topics: publisher tools, dashboard, publisher profile, showcase
+- **Analyze Developer Engagement**: https://learning.postman.com/docs/postman-api-network/showcase/analyze-developer-engagement/
+  Topics: analytics, engagement, metrics, views, forks, active users, error rates
+
 ## Testing & Automation
 - **Writing Tests**: https://learning.postman.com/docs/writing-scripts/test-scripts/
   Topics: testing, assertions, scripts, validation

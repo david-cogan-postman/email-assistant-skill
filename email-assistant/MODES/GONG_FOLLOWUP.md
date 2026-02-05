@@ -4,78 +4,21 @@ This mode generates professional follow-up emails from Gong call transcripts.
 
 ## When This Mode Activates
 
-### Clear Invocation (Proceed Immediately)
+Generate email immediately when user provides transcript with any email-related intent ("follow-up", "email", "draft", or "transcript"). Works with Gong transcripts, meeting notes, or any conversational input.
 
-- "Generate a follow-up email from this transcript"
-- "Draft an email based on this Gong call"
-- "Use the skill to create follow-up" + [transcript]
-- "Help me write a follow-up email" + [transcript]
-- Pasting transcript + "Make this into an email"
-
-**Key:** User explicitly mentions "follow-up", "email", "draft", or "transcript" + provides transcript content.
-
-### Ambiguous Intent (Ask for Confirmation)
-
-- "What should I do with this?" + [transcript]
-- "Help me with this call"
-- "Process this transcript"
-
-**Response:** "Did you want me to generate a follow-up email from this transcript?"
-
-### No Invocation (Suggest Usage)
-
-User pastes transcript WITHOUT requesting email generation.
-
-**Response:** "I see you've shared a transcript. Would you like me to draft a follow-up email from it?"
-
-### Format Flexibility
-
-- **Primary:** Gong transcripts with speaker labels and timestamps
-- **Also works with:** Any conversational text, meeting notes, bullet point summaries
-
-Extract what's available, generate email from any input format provided.
+If user pastes transcript without clear intent, ask: "Would you like me to draft a follow-up email from this?"
 
 ---
 
 ## Clarification Protocol
 
-Questions are ADDITIVE, not BLOCKING. Always generate a draft regardless.
+Questions are ADDITIVE, not BLOCKING. Always generate a draft first, then offer refinements.
 
-### Recipient Name Unclear
+- **Recipient unclear:** Use [NAME] placeholder, list people found in transcript, offer to regenerate
+- **Action items ambiguous:** Include all plausible items with [OWNER] placeholders, ask for confirmation
+- **Transcript incomplete:** Generate from available info, note limitations, offer to regenerate with more context
 
-IF recipient cannot be confidently identified from transcript:
-
-1. Generate draft email with [NAME] placeholder in greeting
-2. Ask user: "Who is the recipient for this email? I found these people in the transcript: [list names with roles]"
-3. Offer: "Reply with the name and I'll regenerate with the correct greeting"
-
-**NEVER block draft generation waiting for recipient name.**
-
-### Action Items Ambiguous
-
-IF action items have multiple interpretations or unclear ownership:
-
-1. Generate draft with all plausible action items
-2. Use [OWNER] placeholder for unclear assignments
-3. Ask user: "I found these possible action items--are all of these correct?"
-4. Offer: "Let me know if I should add, remove, or clarify any"
-
-**NEVER omit action items because they're ambiguous--include with placeholders.**
-
-### Transcript Seems Incomplete
-
-IF transcript appears cut off, very brief, or missing context:
-
-1. Generate draft immediately based on available information
-2. Note limitations in your response: "This transcript seems incomplete. I've generated a draft based on what's here."
-3. Ask: "Would you like to provide more context or a longer transcript?"
-4. Offer: "I can regenerate if you have additional information"
-
-**NEVER block generation saying "need more information."**
-
-### General Principle
-
-User wants draft FIRST, refinement SECOND. Always deliver a complete email, then offer to improve it with clarifications.
+**Principle:** User wants draft FIRST, refinement SECOND.
 
 ---
 
@@ -84,263 +27,122 @@ User wants draft FIRST, refinement SECOND. Always deliver a complete email, then
 Parse the transcript to identify:
 
 ### Participants
+- Internal team members (names, roles)
+- External contacts (names, titles, company)
+- Primary speakers from each side
 
-- **Internal team members:** Names and roles mentioned from your company
-- **External contacts:** Names, titles, and company of the customer/prospect
-- Note who was the primary speaker from each side
-
-### Resources Discussed
-
-- **URLs mentioned:** Exact links shared during the call
-- **Topics to share:** Features, documentation, examples discussed that should be included as links
-- **Attachments referenced:** Decks, PDFs, or materials mentioned ("I'll send you the deck")
-
-### Action Items
-
-- **Tasks:** Specific commitments made by either party
-- **Owners:** Who is responsible (only if explicitly stated)
-- **Timelines:** Due dates or timeframes mentioned (only if explicit)
+### Resources & Actions
+- URLs mentioned or topics needing documentation links
+- Attachments referenced ("I'll send you the deck")
+- Action items with owners and timelines (only if explicitly stated)
 
 ### Call Context
-
-- **When:** Date/time of the call (for "today"/"yesterday"/day-of-week language)
-- **Type:** First meeting, follow-up, workspace review, check-in, etc.
-- **Tone cues:** Formality level, relationship indicators ("always a pleasure," "nice meeting you")
+- Date/time (for "today"/"yesterday" language)
+- Type (first meeting, follow-up, workspace review)
+- Tone cues (formality level, relationship indicators)
 
 ### Topics Discussed
-
-- **Technical topics:** Features, products, capabilities discussed (for resource matching)
-- **Problems mentioned:** Challenges or questions raised (for resource suggestions)
-- **Solutions proposed:** What was offered or demonstrated
-
-This section drives contextual resource suggestions--extract generously.
+- Technical topics and features (drives resource matching)
+- Problems mentioned and solutions proposed
 
 ---
 
 ## Email Structure
 
 ### Opening
-
 - Thank them for their time
-- Reference timing: "today" / "yesterday" / "on [day]" based on call date
-- Add appropriate pleasantry based on relationship (first meeting vs. ongoing)
+- Reference timing: "today" / "yesterday" / "on [day]"
+- Appropriate pleasantry based on relationship
 
 ### Body Sections (order based on call emphasis)
 
-**Resources Section** (when links/materials were discussed):
-- Use resource matching logic to determine inline (1-3) vs grouped (4+) format
-- Include curated Postman links based on topics discussed (see ../RESOURCES/POSTMAN.md)
-- Brief intro: "Following up with a few resources as discussed:"
-- Bulleted list with hyperlinked text
-- Group by topic if multiple categories
+**Resources Section** (when links/materials discussed):
+- Inline for 1-3 links; grouped list for 4+
+- Include curated Postman links from ../RESOURCES/POSTMAN.md
+- Use descriptive anchor text, never bare URLs
 
 **Next Steps Section** (only when action items exist):
-- Only include if specific action items were discussed
 - List tasks with owners and timelines when known
-- If no clear action items, skip this section entirely
+- Skip entirely if no clear action items
 
 **Attachments Note** (when applicable):
-- Use [ATTACH: item name] placeholder when materials were promised
-- Reference what was attached and any context
+- Use [ATTACH: item name] placeholder
 
 ### Closing
-
-- Warm offer to help: "Happy to help with any questions!"
-- Mention follow-up timing if discussed
-- Keep it brief and friendly
+- Warm offer: "Happy to help with any questions!"
+- Keep brief and friendly
 
 ### Signature
-
-- Apply configured signature (default: "Best,\nDavid")
+- Default: "Best,\nDavid"
 
 ---
 
 ## Resource Matching
 
-Based on topics extracted from transcript, suggest relevant Postman resources.
+Match topics from transcript to resources in ../RESOURCES/POSTMAN.md.
 
-### Matching Logic
-
-Review topics discussed in call. Match to resources using topic keywords from ../RESOURCES/POSTMAN.md.
-
-**DIRECTLY RELEVANT** (include inline in email, 1-3 links):
-- Topics explicitly discussed during call
+**Include:**
+- Topics explicitly discussed
 - Problems mentioned that resource solves
-- Features demonstrated or explained
+- Features demonstrated
 
-**ALSO USEFUL** (grouped section if 4+ total links):
-- Adjacent topics likely helpful
-- Related features mentioned briefly
-- General resources for their use case
-
-### Formatting in Email
-
-**INLINE** (for 1-3 directly relevant resources):
-"As we discussed, the [verification checklist](https://www.postman.com/publisher/settings/verification) walks through the publishing process."
-
-**GROUPED** (for 4-7 resources):
-"Here are the resources we discussed:
-- [Verification checklist](url) for publishing your API to the Public API Network
-- [Creating Notebooks](url) to build interactive documentation
-- [Run in Postman button](url) to let users import your collection directly"
-
-Use descriptive anchor text from conversation, not generic "click here" or bare URLs.
-
-### Quality Guidelines
-
-- **Better to suggest 3 perfect resources than 7 maybe-relevant ones**
-- Only include resources actually mentioned or directly solving discussed problems
-- Don't suggest general Postman homepage or learning center--be specific
-- Match conversation level: if discussing advanced features, link to advanced docs
-- No hard limit on suggestions--typically 3-7 based on call content
+**Quality over quantity:** Better 3 perfect resources than 7 maybe-relevant ones.
 
 ---
 
 ## Attachment Detection
 
-Add attachment placeholders when user promises to send materials.
+Add [ATTACH: item name] placeholder when transcript contains BOTH:
+1. **Presentation words:** deck, slides, presentation, PDF, document, file, materials
+2. **Sharing words:** send, share, attach, forward, email you, provide
 
-### Two-Condition Rule
+**Examples:**
+- "I'll send over the onboarding deck" → [ATTACH: onboarding deck]
+- "Let me share those slides" → [ATTACH: slides]
+- "The deck from last week showed..." → NO (referenced, not promised)
 
-Attachment reminder ONLY when transcript contains BOTH:
-
-1. **PRESENTATION words:** deck, slides, presentation, PDF, document, file, materials, spreadsheet
-2. **SHARING words:** send, share, attach, forward, email you, get you, provide
-
-### Detection Examples
-
-**"I'll send over the onboarding deck"** -> YES
-- Presentation: "deck" | Sharing: "send over"
-- Placeholder: [ATTACH: onboarding deck]
-
-**"Let me share those slides with you"** -> YES
-- Presentation: "slides" | Sharing: "share"
-- Placeholder: [ATTACH: slides]
-
-**"The deck from last week showed..."** -> NO
-- Presentation: "deck" | Sharing: NONE (just referenced, not promised)
-
-**"I'll send you the quarterly results"** -> YES
-- Presentation: implied document | Sharing: "send you"
-- Placeholder: [ATTACH: quarterly results]
-
-**"We looked at the roadmap"** -> NO
-- Presentation: implied document | Sharing: NONE
-
-### Semantic Understanding
-
-Use natural language understanding--don't require exact keyword matches.
-
-Variations that count as SHARING words:
-- "I'll get you that" (implies sending)
-- "Forward the materials" (forwarding is sharing)
-- "Email you the file" (explicit sharing)
-- "You'll receive the deck" (implies sending)
-
-### Placeholder Format
-
-Name attachment based on context from transcript:
-
-- "I'll share the integration guide" -> [ATTACH: integration guide]
-- "Sending over the Q3 slides" -> [ATTACH: Q3 slides]
-- "Attaching the customer deck" -> [ATTACH: customer deck]
-
-**NOT** generic "[ATTACHMENT]"--use specific item name from context.
-
-### Placement in Email
-
-Place placeholder where it fits naturally:
-
-- **INLINE:** "I'll send the [ATTACH: onboarding deck] by end of day."
-- **SEPARATE LINE:** "[ATTACH: quarterly review slides]"
-- **WITH ACTION ITEM:** "* Send [ATTACH: integration guide] to team"
-
-### Multiple Attachments
-
-If multiple items promised, create separate placeholder for each:
-
-"I'll send the deck and the case study"
--> [ATTACH: deck]
--> [ATTACH: case study]
+Use specific item name from context, not generic "[ATTACHMENT]".
 
 ---
 
 ## Anti-Hallucination Rules
 
-**CRITICAL: Follow these rules strictly.**
-
-1. **Never invent URLs** -- If a resource was discussed but no URL was shared, use `https://placeholder`
-2. **Never fabricate action items** -- Only include tasks explicitly discussed in the transcript
-3. **Never guess timelines** -- Use `[TIMELINE]` if no date/timeframe was stated
-4. **Never assume ownership** -- Use `[OWNER]` if it's unclear who owns an action item
-5. **Never fill in company details** -- Use placeholders if specifics weren't mentioned
-6. **When in doubt, ask** -- It's better to ask the user than to guess wrong
+1. **Never invent URLs** -- Use `https://placeholder` if resource discussed but no URL shared
+2. **Never fabricate action items** -- Only include tasks explicitly discussed
+3. **Never guess timelines** -- Use `[TIMELINE]` if no date stated
+4. **Never assume ownership** -- Use `[OWNER]` if unclear
+5. **When in doubt, ask** -- Better to ask than guess wrong
 
 ---
 
 ## Formatting Rules
 
-### Links and Resources
-
+### Links
 - Format as hyperlinked text: `[descriptive text](url)`
-- **Never** use bare URLs in email body
-- If URL was discussed but not captured: use `https://placeholder`
-- Group related resources under descriptive headers when appropriate
+- Never use bare URLs
 
-### Placeholders for Missing Information
-
+### Placeholders
 - Missing URL: `[Resource Name](https://placeholder)`
 - Missing timeline: `[TIMELINE]`
 - Missing owner: `[OWNER]`
-- Missing specific detail: `[PLACEHOLDER]`
 
 ### Greetings
-
-- **Single recipient:** "Hi {FirstName},"
-- **Multiple recipients or team:** "Hi {Company} team,"
-- **If recipient unclear:** Use [NAME] placeholder and ask user for clarification
+- Single recipient: "Hi {FirstName},"
+- Multiple/team: "Hi {Company} team,"
+- Unclear: [NAME] placeholder
 
 ### Signature
-
-- Default: "Best,\n[YOUR NAME]"
-- User can configure: "use signature: Cheers,\nSarah"
-- Apply configured signature for the session
+- Default: "Best,\nDavid"
 
 ---
 
 ## Edge Cases
 
-### Very Short Transcripts
-
-IF transcript is very brief (< 5 exchanges):
-- Extract available information
-- Use "Based on our brief conversation..." in email opening
-- Still generate full email structure
-
-### Speaker Labels Without Names
-
-IF transcript shows "Speaker 1", "Speaker 2" instead of names:
-- Extract content anyway
-- Ask user: "Can you tell me who the participants were?"
-- Use [NAME] placeholders until clarified
-
-### Multiple Recipients
-
-- Use team greeting: "Hi {Company} team,"
-- Reference individuals by first name in the body when needed
-- Example: "...as John mentioned during our discussion..."
-
-### No Clear Action Items
-
-- Skip the "Next steps" section entirely
-- Focus on resources shared and relationship-building
-- End with open offer to help
-
-### Long Transcripts
-
-- Focus on: key decisions, action items, resources to share
-- Don't summarize every discussion point
-- Prioritize actionable information
+- **Short transcripts (<5 exchanges):** Use "Based on our brief conversation..."
+- **Speaker labels without names:** Use [NAME] placeholders, ask user
+- **Multiple recipients:** Use team greeting, reference individuals by first name in body
+- **No clear action items:** Skip next steps section, focus on resources and relationship
+- **Long transcripts:** Prioritize key decisions, action items, and resources to share
 
 ---
 
@@ -349,11 +151,6 @@ IF transcript shows "Speaker 1", "Speaker 2" instead of names:
 ### Example 1: Standard Follow-Up with Resources and Next Steps
 
 **Scenario:** Regular check-in with existing partner, discussed multiple resources and next steps
-
-**Key extraction points:**
-- Participants: Vincent (external), David (internal), others mentioned
-- Resources: Verification checklist, Notebooks example, Getting started example, SDK generation info
-- Action items: Workspace review reminder, sync in two weeks, John following up on roadmap question
 
 **Generated email:**
 
@@ -381,15 +178,7 @@ David
 
 ### Example 2: First Meeting / Intro Call
 
-**Scenario:** Initial meeting with new partner, focus on relationship building and next steps
-
-**Key extraction points:**
-- Participants: Procore team (multiple attendees)
-- Resources: Reference examples (PayPal, HubSpot, Zoom, Postman DevRel)
-- Action items: Team to discuss resources and timing internally
-- Context: First meeting, deck presented, warm intro tone
-
-**Generated email:**
+**Scenario:** Initial meeting with new partner; deck presented, warm intro tone
 
 ```
 Hi Procore team,
@@ -398,14 +187,11 @@ So nice meeting everyone today. Thank you for your time! We're excited to work t
 
 For next steps, please keep us posted as you discuss resources and timing. We're here to help make the process as smooth and successful for you as possible.
 
-Attaching the deck from today, we only reviewed the first couple slides but it should be a good reference for socializing internally.
-
-Additionally, here are a few examples that might be helpful. All are strong examples of a great overall workspace, but each also has a specific aspect worth noting:
+Attaching the deck from today [ATTACH: intro deck]. Additionally, here are a few workspace examples worth reviewing:
 
 - [PayPal](https://www.postman.com/paypal) - Good Run in Postman integration, published MCP server
-- [HubSpot](https://www.postman.com/hubspot/hubspot-public-api-workspace/overview?tab=updates) - Good example of workspace updates (i.e. changelog), published MCP server
+- [HubSpot](https://www.postman.com/hubspot/hubspot-public-api-workspace/overview) - Good workspace updates/changelog
 - [Zoom](https://www.postman.com/zoom-developer/zoom-public-workspace/collection/rzauu5q/get-started-fast-with-zoom-apis) - Getting started collection
-- [Postman DevRel](https://www.postman.com/devrel/graphql-examples/overview) - GraphQL implementation examples and tips
 
 Let's stay in touch. I'll reach out in a couple weeks if we haven't reconnected by then. Talk soon!
 
@@ -417,44 +203,24 @@ David
 
 ### Example 3: Workspace Review with Detailed Recommendations
 
-**Scenario:** Technical workspace review with specific recommendations across multiple topics
-
-**Key extraction points:**
-- Participants: Sven and Bogdan (external), John (internal)
-- Resources: Testing materials, API Governance/Spectral docs, Getting Started examples, Run in Postman, Notebooks
-- Action items: Optional follow-up call for testing/Spectral walkthrough, check back end of year
-- Context: First meeting with these contacts, technical deep-dive, deck shared
-
-**Generated email:**
+**Scenario:** Technical deep-dive with specific recommendations; first meeting with these contacts
 
 ```
 Hi Sven and Bogdan,
 
 Thanks for your time today! It was great meeting you both.
 
-Following up with the deck we reviewed (attached). Also wanted to share the learning center materials John mentioned:
+Following up with the deck we reviewed [ATTACH: workspace review deck]. Also wanted to share the learning center materials John mentioned:
 
-- Testing:
-  - [Automated Testing](https://www.postman.com/automated-testing/)
-  - [Testing Video Tutorial](https://www.youtube.com/watch?v=MFxk5BZulVU)
-  - [Run Tests Documentation](https://learning.postman.com/docs/tests-and-scripts/run-tests/run-tests/)
-- API Governance (Spectral):
-  - [Configuring API Governance Rules](https://learning.postman.com/docs/api-governance/configurable-rules/configuring-api-governance-rules/)
-  - [Spectral Documentation](https://learning.postman.com/docs/api-governance/configurable-rules/spectral/)
-
-Please let us know if you'd like to schedule a follow up call to walk through testing capabilities and Spectral in more detail. I also wanted to share some materials around the other next steps we discussed:
-
-- Getting Started examples
-  - [HubSpot Workspace](https://www.postman.com/hubspot/hubspot-public-api-workspace/overview)
-  - [Zoom Get Started Fast](https://www.postman.com/zoom-developer/zoom-public-workspace/collection/rzauu5q/get-started-fast-with-zoom-apis)
+- Testing: [Automated Testing](https://www.postman.com/automated-testing/), [Run Tests Documentation](https://learning.postman.com/docs/tests-and-scripts/run-tests/run-tests/)
+- API Governance: [Configuring Rules](https://learning.postman.com/docs/api-governance/configurable-rules/configuring-api-governance-rules/), [Spectral](https://learning.postman.com/docs/api-governance/configurable-rules/spectral/)
+- Getting Started: [HubSpot](https://www.postman.com/hubspot/hubspot-public-api-workspace/overview), [Zoom](https://www.postman.com/zoom-developer/zoom-public-workspace/collection/rzauu5q/get-started-fast-with-zoom-apis)
 - [Run in Postman buttons](https://learning.postman.com/docs/publishing-your-api/run-in-postman/introduction-run-button/)
-- [Notebooks](https://learning.postman.com/docs/postman-api-network/showcase/publish/notebooks/overview/) ([AWS example](https://www.postman.com/awspartners/notebook/xLYmRrEOm6ov/working-with-partner-originated-oppor))
+- [Notebooks](https://learning.postman.com/docs/publishing-your-api/creating-notebooks/) ([AWS example](https://www.postman.com/awspartners/notebook/xLYmRrEOm6ov/working-with-partner-originated-oppor))
 
-For the MCP server, love your approach of prototyping locally first with the generator before publishing.
+Please let us know if you'd like a follow-up call to walk through testing capabilities and Spectral in more detail.
 
-Your workspace updates are already working well - that July 21st update drove a nice spike in engagement. Keep them coming!
-
-I'll check back in toward the end of the year to see how things are progressing. Let me know if any questions come up in the meantime!
+I'll check back in toward the end of the year. Let me know if any questions come up in the meantime!
 
 Best,
 David

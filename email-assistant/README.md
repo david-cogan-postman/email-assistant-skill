@@ -46,13 +46,3 @@ email-assistant/
     ├── POSTMAN.md         # Postman documentation library
     └── TEMPLATE.md        # Template for adding other domains
 ```
-
-## Voice Calibration
-
-| Context | Formality | Opening | Closing |
-|---------|-----------|---------|---------|
-| External Professional | 6-7/10 | "Hi [Name]," + pleasantry | "Best," |
-| Cold Outreach | 5-6/10 | "Hi [Name]," + role intro | "Best," |
-| Internal | 4-5/10 | "Hi folks" / "Hi [Name]" | "Best," |
-
-Key phrases: "Happy to help", "Would you have 30 minutes?", "Hope 2026 is treating you well!", "I'm reaching out because..."
